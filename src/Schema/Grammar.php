@@ -1,6 +1,6 @@
 <?php
 
-namespace duxet\RethinkDB\Schema;
+namespace Phillx\RethinkDB\Schema;
 
 use Illuminate\Database\Schema\Grammars\Grammar as BaseGrammar;
 

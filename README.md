@@ -1,18 +1,6 @@
-laravel-rethinkdb
-=================
+# RethinkDB for Lumen 5.6
 
-
-[![Total Downloads](https://img.shields.io/packagist/dt/duxet/laravel-rethinkdb.svg?style=flat)](https://packagist.org/packages/duxet/laravel-rethinkdb)
-[![MIT License](https://img.shields.io/packagist/l/duxet/laravel-rethinkdb.svg?style=flat)](https://packagist.org/packages/duxet/laravel-rethinkdb)
-[![Build Status](https://img.shields.io/travis/duxet/laravel-rethinkdb/master.svg?style=flat)](https://travis-ci.org/duxet/laravel-rethinkdb)
-[![Coverage Status](https://img.shields.io/codeclimate/coverage/github/duxet/laravel-rethinkdb.svg?style=flat)](https://codeclimate.com/github/duxet/laravel-rethinkdb)
-[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/duxet/laravel-rethinkdb/master.svg?style=flat)](https://scrutinizer-ci.com/g/duxet/laravel-rethinkdb/)
-
-RethinkDB adapter for Laravel (with Eloquent support)
-
-God bless [@jenssegers](https://github.com/jenssegers) for his great [laravel-mongodb](https://github.com/jenssegers/laravel-mongodb) project. I have used his tests and some other code, since it's awesome codebase for supporting other NoSQL databases. I hope he won't be angry on me for that ;)
-
-This project is aiming at Laravel 5 which is soon to be released, so it might not work with L4.
+    This package is fork of duxet/laravel-rethinkdb with fix and how-to for Lumen 5.6 
 
 # Installation
 
@@ -20,44 +8,51 @@ This project is aiming at Laravel 5 which is soon to be released, so it might no
 
 1. Rethinkdb : You need to make sure that you have installed [rethinkdb](http://www.rethinkdb.com) successfully, you can reffer to rethinkdb [documentation](https://rethinkdb.com/docs/) for the full instruction of how to install rethinkdb.
 
-1. Laravel 5.2 : this package was designed to work with [laravel](http://laravel.com) 5.2, so it will not work with laravel 4.x.
+1. Lumen 5.6 
 
 ## Installation
 
-To fully install this package you will have either to add it manually to your `composer.json` file, or you can execute the following command :
+Composer command to install:
 
-`composer require "duxet/laravel-rethinkdb:dev-master"`
+`composer require "phillx/lumen-rethinkdb:dev-master"`
 
-This will install the package and all the required package for it to work.
+This will install the package and all other required packages needed to work.
 
 ## Service Provider
 
-After you install the library you will need to add the `Service Provider` file to your `app.php` file like :
+After you install the library you will need to register the `Service Provider` file in your `bootstrap/app.php` file like :
 
-`duxet\Rethinkdb\RethinkdbServiceProvider::class,`
+    $app->register(Phillx\Rethinkdb\RethinkdbServiceProvider::class);
+    $app->withEloquent();
 
-inside your `providers` array.
 
 ## Database configuration
 
-Now that you have the service provider setup, you will need to add the following configuration array at the end of your database connections array like :
+Now you need to create file `config/database.php` with content like:
 
-        'rethinkdb' => [
-            'name'      => 'rethinkdb',
-            'driver'    => 'rethinkdb',
-            'host'      => env('DB_HOST', 'localhost'),
-            'port'      => env('DB_PORT', 28015),
-            'database'  => env('DB_DATABASE', 'homestead'),            
-        ]
 
-After you add it, you can just configure your enviroment file to be something like :
+      <?php
+      return [
+          'default' => 'rethinkdb',
+          'connections' => [
+                  'rethinkdb' => [
+                      'name'      => 'rethinkdb',
+                      'driver'    => 'rethinkdb',
+                      'host'      => env('DB_HOST', 'localhost'),
+                      'port'      => env('DB_PORT', 28015),
+                      'database'  => env('DB_DATABASE', 'homestead'),
+                  ]
+              ],
+          'migrations' => 'migrations',
+      ];
+
+After you create it, you can just edit your `.env` file:
 
 	DB_HOST=localhost
-	DB_DATABASE=homestead
+	DB_DATABASE=rethinkdb_name
 	DB_CONNECTION=rethinkdb
 
-but you can always updatr your `DB_HOST` to point to the IP where you have installed rethinkdb.
-
+but you can always update your `DB_HOST` to point to the IP where you have installed rethinkdb.
 # Migration
 
 ## Create a Migration File
@@ -81,7 +76,7 @@ This is an example of how the laravel Users Migration file has become
 
 	<?php
 
-	use duxet\Rethinkdb\Schema\Blueprint;
+	use Phillx\Rethinkdb\Schema\Blueprint;
 	use Illuminate\Database\Migrations\Migration;
 
 	class CreateUsersTable extends Migration
@@ -133,7 +128,7 @@ This is an example of how the laravel model class has become
 
 	namespace App;
 
-	use \duxet\Rethinkdb\Eloquent\Model;
+	use \Phillx\Rethinkdb\Eloquent\Model;
 
 	class News extends Model
 	{
@@ -150,7 +145,7 @@ This is an example of how the laravel User model class has become
 
 ```
 use Illuminate\Auth\Authenticatable;
-use \duxet\Rethinkdb\Eloquent\Model;
+use \Phillx\Rethinkdb\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;

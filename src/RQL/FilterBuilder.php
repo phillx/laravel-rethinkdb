@@ -1,6 +1,6 @@
 <?php
 
-namespace duxet\Rethinkdb\RQL;
+namespace Phillx\Rethinkdb\RQL;
 
 use r;
 

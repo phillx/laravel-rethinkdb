@@ -1,11 +1,11 @@
 <?php
 
-namespace duxet\Rethinkdb;
+namespace Phillx\Rethinkdb;
 
-use duxet\Rethinkdb\Console\Migrations\MigrateMakeCommand;
-use duxet\Rethinkdb\Console\Model\ModelMakeCommand;
-use duxet\Rethinkdb\Eloquent\Model;
-use duxet\Rethinkdb\Migrations\MigrationCreator;
+use Phillx\Rethinkdb\Console\Migrations\MigrateMakeCommand;
+use Phillx\Rethinkdb\Console\Model\ModelMakeCommand;
+use Phillx\Rethinkdb\Eloquent\Model;
+use Phillx\Rethinkdb\Migrations\MigrationCreator;
 use Illuminate\Support\ServiceProvider;
 
 class RethinkdbServiceProvider extends ServiceProvider

@@ -1,6 +1,6 @@
 <?php
 
-namespace duxet\Rethinkdb\Eloquent;
+namespace Phillx\Rethinkdb\Eloquent;
 
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 

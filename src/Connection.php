@@ -1,9 +1,9 @@
 <?php
 
-namespace duxet\Rethinkdb;
+namespace Phillx\Rethinkdb;
 
-use duxet\Rethinkdb\Query\Builder as QueryBuilder;
-use duxet\Rethinkdb\Schema\Grammar;
+use Phillx\Rethinkdb\Query\Builder as QueryBuilder;
+use Phillx\Rethinkdb\Schema\Grammar;
 use r;
 
 class Connection extends \Illuminate\Database\Connection

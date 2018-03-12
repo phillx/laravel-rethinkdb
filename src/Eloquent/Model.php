@@ -1,11 +1,11 @@
 <?php
 
-namespace duxet\Rethinkdb\Eloquent;
+namespace Phillx\Rethinkdb\Eloquent;
 
 use Carbon\Carbon;
 use DateTime;
-use duxet\Rethinkdb\Eloquent\Relations\BelongsTo;
-use duxet\Rethinkdb\Query\Builder as QueryBuilder;
+use Phillx\Rethinkdb\Eloquent\Relations\BelongsTo;
+use Phillx\Rethinkdb\Query\Builder as QueryBuilder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -16,7 +16,7 @@ class Model extends \Illuminate\Database\Eloquent\Model
      *
      * @return string
      */
-    protected function getDateFormat()
+    public function getDateFormat()
     {
         return $this->dateFormat ?: 'Y-m-d H:i:s';
     }
@@ -73,7 +73,7 @@ class Model extends \Illuminate\Database\Eloquent\Model
     {
         $connection = $this->getConnection();
         // Check the connection type
-        if ($connection instanceof \duxet\Rethinkdb\Connection) {
+        if ($connection instanceof \Phillx\Rethinkdb\Connection) {
             return new QueryBuilder($connection);
         }
 
@@ -83,9 +83,9 @@ class Model extends \Illuminate\Database\Eloquent\Model
     /**
      * Create a new Eloquent query builder for the model.
      *
-     * @param \duxet\Rethinkdb\Query\Builder $query
+     * @param \Phillx\Rethinkdb\Query\Builder $query
      *
-     * @return \duxet\Rethinkdb\Eloquent\Builder|static
+     * @return \Phillx\Rethinkdb\Eloquent\Builder|static
      */
     public function newEloquentBuilder($query)
     {

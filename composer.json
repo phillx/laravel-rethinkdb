@@ -1,14 +1,17 @@
 {
-    "name": "duxet/laravel-rethinkdb",
-    "description": "RethinkDB adapter for Laravel",
+    "name": "phillx/lumen-rethinkdb",
+    "description": "RethinkDB adapter for Lumen",
     "authors": [
         {
             "name": "duxet"
+        },
+        {
+            "name": "phillx"
         }
     ],
     "license": "MIT",
     "autoload": {
-        "psr-4": { "duxet\\Rethinkdb\\": "src/" }
+        "psr-4": { "Phillx\\Rethinkdb\\": "src/" }
     },
     "require": {
         "php": ">=7.0.0",

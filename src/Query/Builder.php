@@ -1,10 +1,10 @@
 <?php
 
-namespace duxet\Rethinkdb\Query;
+namespace Phillx\Rethinkdb\Query;
 
-use duxet\Rethinkdb\Connection;
-use duxet\Rethinkdb\Query;
-use duxet\Rethinkdb\RQL\FilterBuilder;
+use Phillx\Rethinkdb\Connection;
+use Phillx\Rethinkdb\Query;
+use Phillx\Rethinkdb\RQL\FilterBuilder;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use r;
 
